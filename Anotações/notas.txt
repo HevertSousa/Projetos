@@ -1,0 +1,4 @@
+expressJS framework para desenvolvimento web backend com nodeJS
+
+framework: bibliotecas gigantes que ajudam na construção de aplicações
+

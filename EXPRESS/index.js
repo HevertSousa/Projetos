@@ -10,4 +10,3 @@ app.listen(4000,function(erro){
         console.log("Servidor iniciado com sucesso");
     }
 })
-

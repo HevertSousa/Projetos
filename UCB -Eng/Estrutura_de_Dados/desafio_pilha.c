@@ -30,17 +30,13 @@ P_pilha empilharTopo(Pilha *topo, Pilha *novo){
     return topo;
 }
 P_pilha desempilhar(Pilha *topo){
-    Pilha *no = NULL;
-
     if (topo != NULL){
-        no->p = topo->p;
-        topo->prox = topo->ant;
+        topo->ant->prox = NULL;
         topo = topo->ant; 
     }else{
         printf("A pilha está vazia");
     }    
-
-     return no;
+    return topo;
 }
 int main(){
     

@@ -53,22 +53,23 @@ int desenfileirar(fila *f){
         }
     }else{
         printf("Fila Vazia");
-        return; 
     }
 
     return dado;
 }
 void mostrar(fila *f){
-    no *ptr;
+    no *ptr = f->ini;
     if(ptr == NULL){
         printf("Lista Vazia"); 
     }else{
         while(ptr != NULL){
         printf("\n %d", ptr->dado);
+        ptr = ptr->prox;
      }
     }
 }
 int main(){
+    int dado;
     fila *f1 = (fila*) malloc(sizeof(fila));
     inicializarFila(f1);
     if(f1 == NULL){
@@ -82,6 +83,17 @@ int main(){
         enfileirar(50, f1);
     }
     mostrar(f1);
+
+    dado = desenfileirar(f1);
+
+    printf("\nO item removido foi %d", dado);
+    mostrar(f1);
+    dado = desenfileirar(f1);
+
+    printf("\nO item removido foi %d", dado);
+    mostrar(f1);
+    dado = desenfileirar(f1);
+
 
     return 0;
 }

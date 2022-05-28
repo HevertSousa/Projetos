@@ -45,7 +45,7 @@ int desenfileirar(fila *f){
     if(ptr != NULL){
         f->ini = ptr->prox;
         ptr->prox = NULL;
-        ptr->dado = dado;
+         dado = ptr->dado;
         free(ptr);
 
         if(f->ini == NULL){
@@ -83,17 +83,15 @@ int main(){
         enfileirar(50, f1);
     }
     mostrar(f1);
-
-    dado = desenfileirar(f1);
-
-    printf("\nO item removido foi %d", dado);
+    dado=desenfileirar(f1);
+    printf("\nO item %d foi removido", dado);
     mostrar(f1);
-    dado = desenfileirar(f1);
-
-    printf("\nO item removido foi %d", dado);
+    dado=desenfileirar(f1);
+    printf("\nO item %d foi removido", dado);
     mostrar(f1);
-    dado = desenfileirar(f1);
-
+    dado=desenfileirar(f1);
+    printf("\nO item %d foi removido", dado);
+    mostrar(f1);
 
     return 0;
 }

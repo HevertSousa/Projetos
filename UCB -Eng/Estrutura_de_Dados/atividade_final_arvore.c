@@ -1,3 +1,16 @@
+/* 
+Hevert Sousa UC19106625
+Estrutura de Dados 
+Professora Hialy
+
+Construir uma árvore binária para armazenar registros de dados pessoais
+Cada registro, ou pessoa registrada deverá conter as seguintes informações 
+Dados Pessoais: nome, cpf, sexo, data de nascimento, naturalidade, nome pai, nome mae  
+Dados Endereço: logradouro, número, complemento, bairro, cidade, CEP, estado, pais
+Dados Contato: e-mail, telefone. 
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -64,7 +77,7 @@ NO recebeDados(ARVORE *arv1, int compara)
     fflush(stdin);
     system("cls");
     printf("\nENTRE COM O ENDEREÇO:\t");
-    printf("LOGRADOURO:\t");
+    printf("\nLOGRADOURO:\t");
     fflush(stdin);
     fgets(novo->p1.endereco.logradouro, 30, stdin);
     printf("\nENTRE COM O COMPLEMENTO:\t");
@@ -73,6 +86,9 @@ NO recebeDados(ARVORE *arv1, int compara)
     printf("\nENTRE COM O BAIRRO:\t");
     fflush(stdin);
     fgets(novo->p1.endereco.bairro, 30, stdin);
+    printf("\nENTRE COM O NUMERO:\t");
+    fflush(stdin);
+    scanf("%d", &novo->p1.endereco.numero);
     printf("\nENTRE COM A CIDADE:\t");
     fflush(stdin);
     fgets(novo->p1.endereco.cidade, 30, stdin);
@@ -127,10 +143,11 @@ void imprimir(NO *raiz)
     printf("\nNOME DO PAI: %s\t", raiz->p1.nomeMae);
     printf("\nNOME DA MAE: %s\t", raiz->p1.nomeMae);
     printf("\n==================================\n");
-    printf("\nDADOS DE ENDEREÇO\t");
-    printf("LOGRADOURO: %s \t", raiz->p1.endereco.logradouro);
+    printf("\nDADOS DE ENDERECO\t");
+    printf("\nLOGRADOURO: %s \t", raiz->p1.endereco.logradouro);
     printf("\nCOMPLEMENTO: %s \t", raiz->p1.endereco.complemento);
-    printf("\n BAIRRO: %s \t", raiz->p1.endereco.bairro);
+    printf("\nNUMERO: \t%d", raiz->p1.endereco.numero);
+    printf("\nBAIRRO: %s \t", raiz->p1.endereco.bairro);
     printf("\nCIDADE: %s \t", raiz->p1.endereco.cidade);
     printf("\nESTADO: %s \t", raiz->p1.endereco.estado);
     printf("\nPAIS: %s \t", raiz->p1.endereco.pais);
@@ -139,6 +156,8 @@ void imprimir(NO *raiz)
     printf("\nDADOS DE CONTATO:\t");
     printf("\nEMAIL: %s\t", raiz->p1.contato.email);
     printf("\nTELEFONE: %s\t", raiz->p1.contato.telefone);
+    imprimir(raiz->direita);
+    system("pause");
     }
 }
 
@@ -175,7 +194,7 @@ int main(void)
 {
 
     char cpf[11];
-    int compara, opcao;
+    int compara = 0, opcao;
     ARVORE arv1;
     criarArvore(&arv1);
 
@@ -188,10 +207,13 @@ int main(void)
             printf("\nINCLUIR\n");
             if (arv1.raiz == NULL)
             {
-                recebeDados(&arv1, 0);
+                recebeDados(&arv1, compara);
             }
             else
             {
+                printf("\nDigite o CPF que quer incluir:\t ");
+                fflush(stdin);
+                fgets(cpf, 11, stdin);
                 compara = strcmp(cpf, arv1.raiz->p1.cpf);
                 if (compara > 0)
                 {
@@ -204,7 +226,7 @@ int main(void)
                 else if (compara == 0)
                 {
                     system("cls");
-                    printf("O CPF já está cadastrado digite novamente");
+                    printf("O CPF ja esta cadastrado digite novamente");
                 }
             }
             system("cls");

@@ -71,7 +71,7 @@ int menu (void){
 	return opcao;
 }
 
-void incluir(ARVORE *arv1, NO *novo){
+void incluir(ARVORE *arv1){
     
     int compara;
 
@@ -114,7 +114,7 @@ void incluir(ARVORE *arv1, NO *novo){
     }else{
 
       do{    
-        compara = strcmp(&novo->p1->cpf, &arv1->raiz->p1->cpf);
+        compara = strcmp(novo->p1->cpf, arv1->raiz->p1->cpf);
             if (compara < 0 )
             {
                 incluirEsquerda(arv1->raiz);
@@ -226,7 +226,7 @@ void incluirDireita(NO *no){
             
         }else{
            do{    
-                compara = strcmp(&novo->p1->cpf, &no->p1->cpf);
+                compara = strcmp(novo->p1->cpf, no->p1->cpf);
             if (compara < 0 )
             {
                 incluirEsquerda(no->direita);
@@ -258,6 +258,7 @@ int main(){
 		switch(opcao){
 			case 1:
 				printf("\nINCLUIR\n");
+                incluir(&arv1);
 				system("cls");
 				break;
 			case 2:

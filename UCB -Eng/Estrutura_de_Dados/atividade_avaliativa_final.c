@@ -8,8 +8,6 @@ Cada registro, ou pessoa registrada deverá conter as seguintes informações
 Dados Pessoais: nome, cpf, sexo, data de nascimento, naturalidade, nome pai, nome mae  
 Dados Endereço: logradouro, número, complemento, bairro, cidade, CEP, estado, pais
 Dados Contato: e-mail, telefone. 
-
-/*
     Para atividade final da disciplina adicionar também a exclusão na árvore binária 
 */
 
@@ -53,7 +51,7 @@ void criarArvore(ARVORE *arv1)
 {
     arv1->raiz = NULL;
     system("cls");
-    printf("ARVORE INCIADA COM SUCESSO");
+
 }
 
 NO recebeDados(ARVORE *arv1, int compara)
@@ -115,13 +113,12 @@ NO recebeDados(ARVORE *arv1, int compara)
     printf("\nENTRE COM O TELEFONE:\t");
     fflush(stdin);
     fgets(novo->p1.contato.telefone, 15, stdin);
-    if (compara == 0)
-    {
+    if(arv1->raiz == NULL){
         novo->direita = NULL;
         novo->esquerda = NULL;
         arv1->raiz = novo;
     }
-    else if (compara > 0)
+     else if (compara > 0)
     {
         novo->direita = NULL;
         novo->esquerda = NULL;
@@ -137,32 +134,29 @@ NO recebeDados(ARVORE *arv1, int compara)
 
 void imprimir(NO *raiz)
 {
-    if (raiz != NULL)
-    {
-    
-    imprimir(raiz->esquerda);
-    printf("\nCPF: %s\t", raiz->p1.cpf);
-    printf("\nNOME: %s\t", raiz->p1.nome);
-    printf("\nSEXO: %s\t", raiz->p1.sexo);
-    printf("\nNATURALIDADE: %s\t", raiz->p1.nomePai);
-    printf("\nNOME DO PAI: %s\t", raiz->p1.nomeMae);
-    printf("\nNOME DA MAE: %s\t", raiz->p1.nomeMae);
-    printf("\n==================================\n");
-    printf("\nDADOS DE ENDERECO\t");
-    printf("\nLOGRADOURO: %s \t", raiz->p1.endereco.logradouro);
-    printf("\nCOMPLEMENTO: %s \t", raiz->p1.endereco.complemento);
-    printf("\nNUMERO: \t%d", raiz->p1.endereco.numero);
-    printf("\nBAIRRO: %s \t", raiz->p1.endereco.bairro);
-    printf("\nCIDADE: %s \t", raiz->p1.endereco.cidade);
-    printf("\nESTADO: %s \t", raiz->p1.endereco.estado);
-    printf("\nPAIS: %s \t", raiz->p1.endereco.pais);
-    printf("\nCEP: %s \t", raiz->p1.endereco.cep);
-    printf("\n==================================\n");
-    printf("\nDADOS DE CONTATO:\t");
-    printf("\nEMAIL: %s\t", raiz->p1.contato.email);
-    printf("\nTELEFONE: %s\t", raiz->p1.contato.telefone);
-    imprimir(raiz->direita);
-    system("pause");
+    if (raiz != NULL) {
+        
+        imprimir(raiz->esquerda);
+        printf("==================================\n");
+        printf("\nCPF: %s", raiz->p1.cpf);
+        printf("\nNOME: %s", raiz->p1.nome);
+        printf("\nSEXO: %s", raiz->p1.sexo);
+        printf("\nNATURALIDADE: %s", raiz->p1.natural);
+        printf("\nNOME DO PAI: %s", raiz->p1.nomePai);
+        printf("\nNOME DA MAE: %s", raiz->p1.nomeMae);
+        printf("DADOS DE ENDERECO");
+        printf("\nLOGRADOURO: %s ", raiz->p1.endereco.logradouro);
+        printf("\nCOMPLEMENTO: %s ", raiz->p1.endereco.complemento);
+        printf("\nNUMERO: %d", raiz->p1.endereco.numero);
+        printf("\nBAIRRO: %s ", raiz->p1.endereco.bairro);
+        printf("\nCIDADE: %s ", raiz->p1.endereco.cidade);
+        printf("\nESTADO: %s ", raiz->p1.endereco.estado);
+        printf("\nPAIS: %s ", raiz->p1.endereco.pais);
+        printf("\nCEP: %s ", raiz->p1.endereco.cep);
+        printf("DADOS DE CONTATO:");
+        printf("\nEMAIL: %s", raiz->p1.contato.email);
+        printf("\nTELEFONE: %s", raiz->p1.contato.telefone);
+        imprimir(raiz->direita);
     }
 }
 
@@ -203,12 +197,12 @@ int menu(void)
     return opcao;
 }
 
-NO *buscaValor(NO *raiz, char cpf[11]){
+NO *buscar(NO *raiz, char cpf[11]){
     int compara;
 
     while (raiz != NULL)
     {
-          compara = strcmp(&cpf, raiz->p1.cpf);
+          compara = strcmp(cpf, raiz->p1.cpf);
           if (compara == 0)
                 {
                    return raiz;
@@ -218,16 +212,13 @@ NO *buscaValor(NO *raiz, char cpf[11]){
 }
 
 NO* remover(NO *raiz, char cpf[11]) {
-  if (raiz == NULL) {
-    printf("Valor nao encontrado!\n");
-    return NULL;
-  } else {
-    if (raiz->p1.cpf == cpf) {
+  if (raiz != NULL) {
+  	if (strcmp(raiz->p1.cpf, cpf) == 0) {
       if (raiz->esquerda == NULL && raiz->direita == NULL) {
         free(raiz);
         printf("Elemento folha removido: %s !\n", cpf);
         return NULL;
-      } else {
+      } else if(strcmp(raiz->esquerda->p1.cpf, cpf) == 0) {
         if (raiz->esquerda != NULL && raiz->direita != NULL) {
 	        pessoa p2;
 	          NO *aux = raiz->esquerda;
@@ -253,12 +244,16 @@ NO* remover(NO *raiz, char cpf[11]) {
         }
       }
     } else {
-      if (strcmp(&cpf, raiz->p1.cpf) < 0)
+      if (strcmp(raiz->esquerda->p1.cpf, cpf) < 0)
         raiz->esquerda = remover(raiz->esquerda, cpf);
       else
-        raiz->direita = remover(raiz->direita, cpf);
+        raiz->direita = remover(raiz->direita->p1.cpf, cpf);
       return raiz;
     }
+    
+  } else {
+    printf("Valor nao encontrado!\n");
+    return NULL;
   }
 }
 
@@ -272,7 +267,6 @@ int main(void)
     NO *busca, *raiz = NULL; 
     ARVORE arv1;
     criarArvore(&arv1);
-
     do
     {
         opcao = menu();
@@ -308,14 +302,18 @@ int main(void)
             break;
         case 2:
             printf("\nLISTAR\n");
-            imprimir(arv1.raiz);
+            if(arv1.raiz == NULL){
+                printf("Árvore VAZIA!!!\n");
+            }else{
+                imprimir(arv1.raiz);
+            }
             break;
         case 3:
             printf("\nBUSCAR\n");
                 printf("\n\tDigite o CPF procurado: ");
                 fflush(stdin);
                 fgets(cpf, 11, stdin);
-                busca = buscarValor(arv1, cpf);
+                busca = buscar(arv1.raiz, cpf);
                 if (busca) {
                     printf("\n\tValor encontrado:\n");
                 imprimir(busca);
@@ -327,8 +325,9 @@ int main(void)
             printf("\nEXCLUIR\n");
                 printf("\t");
                 printf("\n\tDigite o CPF a ser removido: ");
+                fflush(stdin);
                 fgets(cpf, 11, stdin);
-                raiz = remover(raiz, cpf);
+                raiz = remover(arv1.raiz, cpf);
             break;
         case 5:
             printf("\nDESTRUIR\n");

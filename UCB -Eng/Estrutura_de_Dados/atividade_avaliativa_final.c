@@ -247,7 +247,7 @@ NO* remover(NO *raiz, char cpf[11]) {
       if (strcmp(raiz->esquerda->p1.cpf, cpf) < 0)
         raiz->esquerda = remover(raiz->esquerda, cpf);
       else
-        raiz->direita = remover(raiz->direita->p1.cpf, cpf);
+        raiz->direita = remover(raiz->direita, cpf);
       return raiz;
     }
     

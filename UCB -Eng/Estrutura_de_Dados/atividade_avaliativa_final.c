@@ -14,6 +14,7 @@ Dados Contato: e-mail, telefone.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 /* Estruturas da árvore e dos dados do programa*/
 typedef struct ENDERECO
@@ -134,6 +135,7 @@ NO recebeDados(ARVORE *arv1, int compara)
 
 void imprimir(NO *raiz)
 {
+    setlocale(LC_ALL, "Portuguese");
     if (raiz != NULL) {
         
         imprimir(raiz->esquerda);
@@ -261,7 +263,6 @@ NO* remover(NO *raiz, char cpf[11]) {
 
 int main(void)
 {
-
     char cpf[11];
     int compara = 0, opcao;
     NO *busca, *raiz = NULL; 

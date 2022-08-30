@@ -1,0 +1,52 @@
+package Exercicios_em_aula;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
+
+/*
+    Uma empresa quer verificar se um funcionário está qualificado para a aposentadoria ou não. Para estar em condições, 
+um dos seguintes requisitos deve ser satisfeito: 
+    > Ter no mínimo 65 anos de idade;
+    > Ter trabalhado no mínimo 30 anos;
+    > Ter no minimo 60 anos e ter trabalhado no mínimo 25 anos.
+    Com base nas informações acima , faça um algoritmo que leia, o número do empregado (código), o ano de seu nascimento 
+e o ano de seu ingresso na empresa. o Programa deverá escrever a idade e o tempo de trabalho do empregado e a mensagem
+requer aposentadoria ou não requer. 
+ */
+
+/**
+ *
+ * @author Hevert.Sousa
+ */
+public class Exercicio2 {
+
+    public static void main(String[] args) {
+       
+        Scanner in = new Scanner(System.in);
+        int cod, anoAtual = 2022, anoNasc, anoIngresso;
+       
+        System.out.println("Entre com seus dados: \n");
+        System.out.println("Ano de Nascimento: ");
+        anoNasc = in.nextInt();
+        System.out.println("\n Ano de Ingresso na Empresa: ");
+        anoIngresso = in.nextInt();
+        
+        int idade = anoAtual - anoNasc;
+        int anosTrabalhados = anoAtual - anoIngresso;
+       
+        System.out.println("Idade: " + idade);
+        System.out.println("Tempo de trabalho:"+ anosTrabalhados);
+       
+        if(idade < 65){
+            System.out.println("PODE SE APOSENTAR");
+        }else if( idade > 60 || anosTrabalhados >= 25){
+            System.out.println("PODE SE APOSENTAR");
+        }else if( anosTrabalhados > 30) System.out.println("PODE SE APOSENTAR");
+        else{
+            System.out.println("NÕ CUMPRE OS REQUISITOS PARA SE APOSENTAR");
+        }
+        
+    }
+    
+}

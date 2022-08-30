@@ -6,9 +6,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Teste",
+            "request": "launch",
+            "mainClass": "JAVA.Teste",
+            "projectName": "Projetos_363a1373"
+        },
+        {
+            "type": "java",
             "name": "Launch Java Program",
             "request": "launch",
-            "mainClass": "Exercicio2"
+            "mainClass": ""
         },
         {
             "name": "(gdb) Iniciar",
@@ -29,12 +36,11 @@
                     "ignoreFailures": true
                 },
                 {
-                    "description":  "Definir Tipo de Desmontagem como Intel",
+                    "description": "Definir Tipo de Desmontagem como Intel",
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
             ]
         }
-
     ]
 }

@@ -14,7 +14,7 @@ public class Pessoa {
         
     // comportamentos ou funções (métodos) 
         public int calc(int anoN){
-            int idade = 2022 - anoN;
+            idade = 2022 - anoN;
             return idade;
         }
 }

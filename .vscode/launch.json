@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Aula5_Exemplo1",
+            "request": "launch",
+            "mainClass": "Aula_5.Aula5_Exemplo1",
+            "projectName": "mavenproject1"
+        },
+        {
+            "type": "java",
+            "name": "Launch Exercicio1",
+            "request": "launch",
+            "mainClass": "JAVA.Exercicio1",
+            "projectName": "Projetos_363a1373"
+        },
+        {
+            "type": "java",
             "name": "Launch Teste",
             "request": "launch",
             "mainClass": "JAVA.Teste",

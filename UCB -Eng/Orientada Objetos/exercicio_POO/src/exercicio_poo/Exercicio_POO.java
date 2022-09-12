@@ -53,7 +53,7 @@ public class Exercicio_POO {
                 Liv1.setLancamento(in.nextInt());
                 System.out.println("Digite o número da edição: ");
                 Liv1.setEdicao(in.nextInt());
-                Liv1.imprimir();
+                Liv1.imprimir(); 
             }
             if (opcao == 4){
                 

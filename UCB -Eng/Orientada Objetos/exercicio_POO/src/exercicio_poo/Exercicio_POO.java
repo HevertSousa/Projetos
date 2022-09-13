@@ -16,6 +16,7 @@ public class Exercicio_POO {
         // TODO code application logic here
        Scanner in = new Scanner (System.in);
        int opcao;
+       float valorTotal, valor, desconto;
        Conta_Banco conta1 = new Conta_Banco();
        Emprestimo Emp1 = new Emprestimo();
        Lampada Lamp = new Lampada();
@@ -56,7 +57,8 @@ public class Exercicio_POO {
                 Liv1.imprimir(); 
             }
             if (opcao == 4){
-                
+                valorTotal = (5 - ((10/100)*5))*15;
+                System.out.println("Valor Final: "+ valorTotal);
             }
             if (opcao == 5){
                 

@@ -24,6 +24,7 @@ public class Exercicios_Metodos {
                     Prod1.qtd = in.nextInt();
 
                     if(Prod1.qtd > 0 ){
+                        Prod1.calculaDesc(Prod1.valor, Prod1.qtd);
                         Prod1.imprimir();
                     }
                 }

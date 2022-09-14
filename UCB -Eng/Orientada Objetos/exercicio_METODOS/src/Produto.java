@@ -11,12 +11,14 @@ public class Produto {
             valorTotal = qtd*valor;
         }
         else if(qtd > 10 && qtd < 21){
-            desconto = valor*(10/100);
-            valorTotal = (valor - ((10/100)*valor))*qtd;
+            desconto = (valor*(10f/100f)*qtd);
+            valorTotal = valor*qtd - desconto;
         }else if(qtd > 20 && qtd < 50){
-            valorTotal = (valor - ((20/100)*valor))*qtd;
+            desconto = (valor*(20f/100f)*qtd);
+            valorTotal = valor*qtd - desconto;
         }else if(qtd > 50){
-            valorTotal = (valor - ((25/100)*valor))*qtd;
+            desconto = (valor*(25f/100f)*qtd);
+            valorTotal = valor*qtd - desconto;
         }
         return valorTotal; 
     }
@@ -24,6 +26,7 @@ public class Produto {
         System.out.println("NOME: "+ nome);
         System.out.println("QUANTIDADE: "+ qtd);
         System.out.println("VALOR TOTAL: "+ valorTotal);
+        System.out.println("DESCONTO TOTAL: "+ desconto);
     }
     
 }

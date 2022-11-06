@@ -9,5 +9,4 @@ package extendsaula;
  * @author Hevert.Sousa
  */
 public class Professor {
-
 }

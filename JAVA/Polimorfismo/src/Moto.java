@@ -14,6 +14,8 @@ public class Moto extends Veiculo{
         this.ano = ano;
     }
 
-    
+    public void insertData(){
+        
+    }
 
 }

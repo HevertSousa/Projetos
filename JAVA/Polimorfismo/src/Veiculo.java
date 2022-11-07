@@ -20,4 +20,7 @@ public class Veiculo {
     public void printDados(){
         
     }
+    public void insertData(){
+        
+    }
 }

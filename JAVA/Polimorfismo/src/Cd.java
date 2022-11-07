@@ -2,8 +2,10 @@
  *
  * @author Hevert.Sousa
  */
+import java.util.ArrayList;
+import java.util.List;
 public class Cd extends Midia{
-       
+
     public Cd(int codigo, double preco, String nome) {
         super(codigo, preco, nome);
     }
@@ -23,9 +25,7 @@ public class Cd extends Midia{
     }
     @Override
     public void inserirDados(){
-        System.out.println("Cadastrando Novo DVD \n");
-        System.out.println("Código do DVD: ");
-        System.out.println("");
-        System.out.println("");
+        List <Cd> cds = new ArrayList<Cd>();
+
     }
 }

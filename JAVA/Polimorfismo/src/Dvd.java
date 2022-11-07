@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Hevert.Sousa
@@ -22,9 +25,6 @@ public class Dvd extends Midia {
     }
     @Override
     public void inserirDados(){
-        System.out.println("Cadastrando Novo DVD \n");
-        System.out.println("Código do DVD: ");
-        System.out.println("");
-        System.out.println("");
+        List <Dvd> dvds = new ArrayList<Dvd>();
     }
 }
